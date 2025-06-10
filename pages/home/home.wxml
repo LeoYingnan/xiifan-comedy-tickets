@@ -1,0 +1,99 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <input placeholder="搜索演出、演员或剧场" value="{{searchValue}}" bindinput="onSearchInput" bindconfirm="onSearch" />
+      <button class="search-btn" bindtap="onSearch">🔍</button>
+    </view>
+    <view class="hot-searches">
+      <text wx:for="{{hotSearches}}" wx:key="index" class="hot-search-item" data-keyword="{{item}}" bindtap="onHotSearchTap">{{item}}</text>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <swiper class="banner-swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image class="banner-image" src="{{item.image}}" mode="aspectFill" data-url="{{item.url}}" bindtap="onBannerTap" />
+      <view class="banner-title">{{item.title}}</view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 喜剧分类 -->
+  <view class="section">
+    <view class="section-title">🎭 喜剧分类</view>
+    <view class="categories">
+      <view wx:for="{{categories}}" wx:key="id" class="category-item" data-category="{{item}}" bindtap="onCategoryTap">
+        <view class="category-icon" style="background-color: {{item.color}}">{{item.icon}}</view>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日推荐 -->
+  <view class="section">
+    <view class="section-title">⭐ 今日推荐</view>
+    <view class="recommended-list">
+      <view wx:for="{{todayRecommended}}" wx:key="id" class="recommended-item card" data-id="{{item.id}}" bindtap="onShowTap">
+        <image class="recommended-poster" src="{{item.poster}}" mode="aspectFill" />
+        <view class="recommended-info">
+          <view class="recommended-title">{{item.title}}</view>
+          <view class="recommended-venue">📍 {{item.venue}}</view>
+          <view class="recommended-date">🕐 {{item.date}}</view>
+          <view class="recommended-meta">
+            <view class="price primary-color">{{item.price}}</view>
+            <view class="laugh-level">
+              <text wx:for="{{item.laughLevel}}" wx:key="index">😂</text>
+            </view>
+          </view>
+          <view class="tags">
+            <text wx:for="{{item.tags}}" wx:key="index" class="tag tag-primary">{{item}}</text>
+          </view>
+        </view>
+        <button class="buy-btn btn-primary btn-small" data-id="{{item.id}}" bindtap="onBuyTicket">立即购票</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门演出 -->
+  <view class="section">
+    <view class="section-title">🔥 热门演出</view>
+    <scroll-view class="hot-shows" scroll-x="true">
+      <view wx:for="{{hotShows}}" wx:key="id" class="hot-show-item" data-id="{{item.id}}" bindtap="onShowTap">
+        <image class="hot-show-poster" src="{{item.poster}}" mode="aspectFill" />
+        <view class="hot-show-title">{{item.title}}</view>
+        <view class="hot-show-venue">{{item.venue}}</view>
+        <view class="hot-show-date">{{item.date}}</view>
+        <view class="hot-show-price primary-color">{{item.price}}</view>
+        <view class="rating">⭐ {{item.rating}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 明星演员 -->
+  <view class="section">
+    <view class="section-title">🌟 明星演员</view>
+    <view class="star-actors">
+      <view wx:for="{{starActors}}" wx:key="id" class="star-actor-item" data-id="{{item.id}}" bindtap="onActorTap">
+        <image class="actor-avatar image-round" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="actor-name">{{item.name}}</view>
+        <view class="actor-desc text-small">{{item.description}}</view>
+        <view class="actor-shows text-small">{{item.shows}}场演出</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 附近剧场 -->
+  <view class="section">
+    <view class="section-title">📍 附近剧场</view>
+    <view class="nearby-venues">
+      <view wx:for="{{nearbyVenues}}" wx:key="id" class="venue-item card" data-id="{{item.id}}" bindtap="onVenueTap">
+        <image class="venue-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="venue-info">
+          <view class="venue-name">{{item.name}}</view>
+          <view class="venue-distance text-small">距离 {{item.distance}} · {{item.shows}}场演出</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

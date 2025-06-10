@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "喜番喜剧",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "backgroundTextStyle": "light"
+} 
