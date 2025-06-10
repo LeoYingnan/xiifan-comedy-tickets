@@ -75,6 +75,5 @@
   "useExtendedLib": {
     "weui": true
   },
-  "darkmode": false,
-  "themeLocation": "theme.json"
+  "darkmode": false
 } 
