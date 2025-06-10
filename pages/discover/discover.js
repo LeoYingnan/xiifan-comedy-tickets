@@ -1,1 +1,1 @@
- 
+Page({ data: { searchValue: '', hotKeywords: ['开心麻花', '脱口秀', '相声'], shows: [] }, onLoad: function(options) { console.log('发现页面加载') }, onSearchInput: function(e) { this.setData({ searchValue: e.detail.value }) } })

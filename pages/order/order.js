@@ -1,0 +1,1 @@
+Page({ data: { activeTab: 0, tabs: ['全部', '待支付', '已支付'], orders: [] }, onLoad: function() { console.log('订单页面加载') }, onTabTap: function(e) { this.setData({ activeTab: e.currentTarget.dataset.index }) } })
